@@ -1,0 +1,46 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>ATN Shop</title>
+    </head>
+
+    <body style="background-color: pink">
+        <h1 style = "color:rgb(244, 44, 9);">Welcome to ATN Toy store</h1>
+          
+        <!-- (1): CREATE product -->         
+        <!-- --> 
+        <form action="/products" method="POST">   
+            <label style="font-size: 20px" for="name">Product's name:</label><br>
+            <input type="text" placeholder="name" name="name" required />  
+            <br>
+            <label style="font-size: 20px" for="price">Product's price:</label><br>
+            <input type="text" placeholder="price" name="price" required />
+            <br>
+            <label style="font-size: 20px" for="description">Product's description:</label><br>
+            <input type="text" placeholder="description" name="description" required />
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <!-- -->                               
+        
+        <!-- (2) READ product -->                        
+        <h1> READ: All products in Database </h1>
+        <ul class="Products">
+            <!-- Loop through products -->
+            <% for(var i = 0; i < products.length; i++) {%>
+                <li class="product">
+                    <!-- Output name from the iterated product object -->
+                    <span style ="font-size: 30px"><%= products[i].name %><b>:</b></span>
+                    <!-- Output description from the iterated product object -->
+                    <span style ="font-size: 30px;"><%= products[i].description %></span> <br>
+                    <!-- Output price from the iterated product object -->
+                    <span style ="font-size: 30px;">Price<b>:</b> <%= products[i].price %> đ</span>
+                    
+                </li>
+            <% } %>
+        </ul>  
+    </body>
+
+</html>
